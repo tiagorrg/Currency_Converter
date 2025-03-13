@@ -45,7 +45,7 @@
     },
     {
       "name": "flutter",
-      "rootUri": "file:///Users/semen/Downloads/flutter/packages/flutter",
+      "rootUri": "file:///Users/semen/Documents/flutter/packages/flutter",
       "packageUri": "lib/",
       "languageVersion": "3.7"
     },
@@ -57,9 +57,21 @@
     },
     {
       "name": "flutter_test",
-      "rootUri": "file:///Users/semen/Downloads/flutter/packages/flutter_test",
+      "rootUri": "file:///Users/semen/Documents/flutter/packages/flutter_test",
       "packageUri": "lib/",
       "languageVersion": "3.7"
+    },
+    {
+      "name": "http",
+      "rootUri": "file:///Users/semen/.pub-cache/hosted/pub.dev/http-0.13.6",
+      "packageUri": "lib/",
+      "languageVersion": "2.19"
+    },
+    {
+      "name": "http_parser",
+      "rootUri": "file:///Users/semen/.pub-cache/hosted/pub.dev/http_parser-4.1.2",
+      "packageUri": "lib/",
+      "languageVersion": "3.4"
     },
     {
       "name": "leak_tracker",
@@ -111,7 +123,7 @@
     },
     {
       "name": "sky_engine",
-      "rootUri": "file:///Users/semen/Downloads/flutter/bin/cache/pkg/sky_engine",
+      "rootUri": "file:///Users/semen/Documents/flutter/bin/cache/pkg/sky_engine",
       "packageUri": "lib/",
       "languageVersion": "3.7"
     },
@@ -152,6 +164,12 @@
       "languageVersion": "3.5"
     },
     {
+      "name": "typed_data",
+      "rootUri": "file:///Users/semen/.pub-cache/hosted/pub.dev/typed_data-1.4.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.5"
+    },
+    {
       "name": "vector_math",
       "rootUri": "file:///Users/semen/.pub-cache/hosted/pub.dev/vector_math-2.1.4",
       "packageUri": "lib/",
@@ -170,10 +188,10 @@
       "languageVersion": "3.7"
     }
   ],
-  "generated": "2025-03-13T19:26:30.796048Z",
+  "generated": "2025-03-13T20:57:53.631148Z",
   "generator": "pub",
   "generatorVersion": "3.7.0",
-  "flutterRoot": "file:///Users/semen/Downloads/flutter",
+  "flutterRoot": "file:///Users/semen/Documents/flutter",
   "flutterVersion": "3.29.0",
   "pubCache": "file:///Users/semen/.pub-cache"
 }
