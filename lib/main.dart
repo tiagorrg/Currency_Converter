@@ -39,13 +39,13 @@ class _CurrencyConverterScreenState extends State<CurrencyConverterScreen> {
   }
 
   Future<void> _fetchExchangeRates() async {
-    final response = await http.get(Uri.parse('https://api.frankfurter.app/latest?apikey=afe143b'));
+    final response = await http.get(Uri.parse('https://v6.exchangerate-api.com/v6/92f4cb16f36bc323757f395f/latest/USD'));
     if (response.statusCode == 200) {
       final data = json.decode(response.body);
       setState(() {
-        _exchangeRates = data['rates'];
-        _fromCurrency = data['rates'].keys.first;
-        _toCurrency = data['rates'].keys.first; // Или другое значение по умолчанию
+        _exchangeRates = data['conversion_rates'];
+        _fromCurrency = data['conversion_rates'].keys.first;
+        _toCurrency = 'RUB'; // Установите рубль по умолчанию
         _isLoading = false;
       });
     } else {
