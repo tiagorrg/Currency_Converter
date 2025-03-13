@@ -1,0 +1,1 @@
+ /Users/semen/Documents/mobil_flutter/currency_converter/.dart_tool/flutter_build/419638dc34078fdab6751fae832f28e2/native_assets.json: 
