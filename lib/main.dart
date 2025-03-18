@@ -13,6 +13,8 @@ class CurrencyConverterApp extends StatelessWidget {
       title: 'Currency Converter',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        fontFamily: 'Roboto',
+        visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: CurrencyConverterScreen(),
     );
@@ -67,62 +69,139 @@ class _CurrencyConverterScreenState extends State<CurrencyConverterScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Currency Converter'),
+        title: Text('Currency Converter', style: TextStyle(fontWeight: FontWeight.bold)),
+        centerTitle: true,
+        backgroundColor: Colors.blue,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: _isLoading
-            ? Center(child: CircularProgressIndicator())
+            ? Center(child: CircularProgressIndicator(color: Colors.blue))
             : Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
+            Text(
+              'Amount',
+              style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 8.0),
             TextField(
               controller: _amountController,
               keyboardType: TextInputType.number,
               decoration: InputDecoration(
-                labelText: 'Amount',
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
+                filled: true,
+                fillColor: Colors.grey[200],
               ),
             ),
             SizedBox(height: 16.0),
-            DropdownButton<String>(
-              value: _fromCurrency,
-              onChanged: (value) {
-                setState(() {
-                  _fromCurrency = value;
-                });
-              },
-              items: _exchangeRates.keys
-                  .map<DropdownMenuItem<String>>((String value) {
-                return DropdownMenuItem<String>(
-                  value: value,
-                  child: Text(value),
-                );
-              }).toList(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'From Currency',
+                        style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox(height: 8.0),
+                      InputDecorator(
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                          filled: true,
+                          fillColor: Colors.grey[200],
+                        ),
+                        child: DropdownButtonHideUnderline(
+                          child: DropdownButton<String>(
+                            value: _fromCurrency,
+                            onChanged: (value) {
+                              setState(() {
+                                _fromCurrency = value;
+                              });
+                            },
+                            items: _exchangeRates.keys
+                                .map<DropdownMenuItem<String>>((String value) {
+                              return DropdownMenuItem<String>(
+                                value: value,
+                                child: Text(value),
+                              );
+                            }).toList(),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 30.0),
+                  child: Icon(Icons.arrow_forward, size: 52.0, color: Colors.black),
+                ),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'To Currency',
+                        style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox(height: 8.0),
+                      InputDecorator(
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                          filled: true,
+                          fillColor: Colors.grey[200],
+                        ),
+                        child: DropdownButtonHideUnderline(
+                          child: DropdownButton<String>(
+                            value: _toCurrency,
+                            onChanged: (value) {
+                              setState(() {
+                                _toCurrency = value;
+                              });
+                            },
+                            items: _exchangeRates.keys
+                                .map<DropdownMenuItem<String>>((String value) {
+                              return DropdownMenuItem<String>(
+                                value: value,
+                                child: Text(value),
+                              );
+                            }).toList(),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             ),
             SizedBox(height: 16.0),
-            DropdownButton<String>(
-              value: _toCurrency,
-              onChanged: (value) {
-                setState(() {
-                  _toCurrency = value;
-                });
-              },
-              items: _exchangeRates.keys
-                  .map<DropdownMenuItem<String>>((String value) {
-                return DropdownMenuItem<String>(
-                  value: value,
-                  child: Text(value),
-                );
-              }).toList(),
+            Center(
+              child: ElevatedButton(
+                onPressed: _convertCurrency,
+                style: ElevatedButton.styleFrom(
+                  padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 40.0),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+
+                ),
+                child: Text('Convert', style: TextStyle(fontSize: 20.0)),
+              ),
             ),
             SizedBox(height: 16.0),
-            ElevatedButton(
-              onPressed: _convertCurrency,
-              child: Text('Convert'),
-            ),
-            SizedBox(height: 16.0),
-            Text(
-              'Converted Amount: $_convertedAmount',
-              style: TextStyle(fontSize: 20.0),
+            Center(
+              child: Text(
+                'Converted Amount: ${_convertedAmount.toStringAsFixed(2)}',
+                style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
+              ),
             ),
           ],
         ),
